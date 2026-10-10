@@ -1,0 +1,10 @@
+{
+    "username": "utpal@gmail.com",
+    "password": "Secret@123",
+    "eventName": "Annual Tech Meetup",
+    "eventDescription": "A gathering for tech enthusiasts to network and learn about the latest trends.",
+    "city":  "Kolkata",
+   "venue":  "Newtown",
+   "imageLink":  "https://commons.wikimedia.org/wiki/File:Durga_Puja_image.jpg"
+
+}
