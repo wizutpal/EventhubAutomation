@@ -3,23 +3,31 @@ import { LoginPage } from '../pageobjects/LoginPage';
 import { TestData } from '../utils/types';
 import testData from '../utils/testData.json';
 import { EventsPage } from '../pageobjects/EventsPage';
+import { HomePage } from '../pageobjects/HomePage';
+import { EventBookingPage } from '../pageobjects/EventBookingPage';
 
 
 const data = testData as TestData;
 
 test.only('Login to Eventhub', async ({page}) => {
   const loginPage= new LoginPage(page);
-  loginPage.login(data.username,data.password);
+  await loginPage.login(data.username,data.password);
 
-  //Add Event Page
+  //Adding Event 
   const eventPage= new EventsPage(page);
-  eventPage.createEvent(data.eventName, data.eventDescription, data.city, data.venue, data.imageLink)
-  await expect (page.locator("//tbody/tr[4]/td[1]")).toHaveText(data.eventName);
- 
+ await eventPage.createEvent(data.eventName, data.eventDescription, data.city, data.venue, data.imageLink)
+  //await expect (page.locator("//tbody/tr[4]/td[1]")).toHaveText(data.eventName);
+
+  //Homepage and Event Book
+  const homePage=new HomePage(page);
+  const eventBookingPage= new EventBookingPage(page);
+  await homePage.goToHome();
+  await eventBookingPage.bookCreatedEvent();
+
 })
 
 test('Login to Eventhub1', async ({page}) => {
-// afte booking go to home
+// after booking go to home
 await page.locator('#nav-home').click();
 const cards = page.getByRole('article');
 await cards.first().waitFor();   // wait for cards to render before reading

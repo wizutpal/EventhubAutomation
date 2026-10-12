@@ -6,4 +6,8 @@ export interface TestData {
    city: string;
    venue: string;
    imageLink: string;
+customerName:  string;
+     customerEmail: string;
+     customerPhone:  string;
+
 }

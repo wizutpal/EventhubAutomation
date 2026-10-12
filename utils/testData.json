@@ -5,6 +5,9 @@
     "eventDescription": "A gathering for tech enthusiasts to network and learn about the latest trends.",
     "city":  "Kolkata",
    "venue":  "Newtown",
-   "imageLink":  "https://commons.wikimedia.org/wiki/File:Durga_Puja_image.jpg"
+   "imageLink":  "https://commons.wikimedia.org/wiki/File:Durga_Puja_image.jpg",
+    "customerName":  "Peter Jones",
+     "customerEmail": "peter@gmail.com",
+     "customerPhone":  "1234567890"
 
 }

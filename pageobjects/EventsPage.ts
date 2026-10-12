@@ -15,6 +15,7 @@ seats:Locator ;
 imageLink:Locator ;
 addEventBtn:Locator ;
 createdEventName:Locator ;
+ allEventsInCreatePage: Locator;
 
     constructor(page: Page){
         this.page=page;
@@ -30,6 +31,7 @@ createdEventName:Locator ;
         this.seats= page.getByLabel('Total Seats*');
         this.imageLink=page.locator('input[id="image-url-(optional)"]')
         this.addEventBtn= page.locator('#add-event-btn');
+        this.allEventsInCreatePage= page.locator("tbody tr td:first-child")
         this.createdEventName= page.locator("//tbody/tr[4]/td[1]")
 
     }
@@ -38,6 +40,8 @@ createdEventName:Locator ;
 async createEvent(eventName: string, eventDesc: string, city:string, venue: string, imageLink: string){
   await this.events.click()
  await this.addNewEvent.click();
+ await expect(this.titlePlaceholder).toBeVisible();   // form is rendered
+
  await this.titlePlaceholder.fill(eventName);
   await this.descPlaceholder.fill(eventDesc);
  await this.occation.selectOption('Festival');
@@ -48,6 +52,15 @@ async createEvent(eventName: string, eventDesc: string, city:string, venue: stri
 await this.seats.fill('1000');
 await this.imageLink.fill(imageLink);
   await this.addEventBtn.click();
-  await expect (this.createdEventName).toHaveText(eventName);
+const allTitles = await this.allEventsInCreatePage.allTextContents();
+
+  let found = false;
+  for (const title of allTitles) {
+    if (title.trim() === eventName) {
+      found = true;
+      break;
+    }
+  }
+  expect(found).toBeTruthy();
 }
 }
