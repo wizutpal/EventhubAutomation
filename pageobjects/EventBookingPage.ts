@@ -30,7 +30,7 @@ constructor(page: Page){
 
     }
 
-    async bookCreatedEvent(){       
+    async bookCreatedEvent(): Promise<string> {       
 //const cards = page.getByRole('article');
 //await cards.first().waitFor();   // wait for cards to render before reading
 
@@ -38,6 +38,7 @@ const titleNames= await this.eventNames.allTextContents();
 for(let i=0; i<titleNames.length; i++){
   if(titleNames[i].trim() === data.eventName){
     await this.cards.nth(i).getByRole('link', { name: 'Book Now' }).click();
+     await expect (this.eventNameInBooking).toBeVisible();
     break;
   }
 }
@@ -50,6 +51,11 @@ for(let i=0; i<titleNames.length; i++){
     
     await expect(this.successMsg).toHaveText("Booking Confirmed! 🎉")
     const bookingId= await this.bookingRef.textContent();
+    
+     if (!bookingId) {
+    throw new Error('Booking ID was not found');
+  }
     console.log(bookingId);
+    return bookingId;
 }
 }

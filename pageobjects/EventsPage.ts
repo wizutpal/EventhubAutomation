@@ -16,6 +16,7 @@ imageLink:Locator ;
 addEventBtn:Locator ;
 createdEventName:Locator ;
  allEventsInCreatePage: Locator;
+ toast: Locator;
 
     constructor(page: Page){
         this.page=page;
@@ -33,6 +34,7 @@ createdEventName:Locator ;
         this.addEventBtn= page.locator('#add-event-btn');
         this.allEventsInCreatePage= page.locator("tbody tr td:first-child")
         this.createdEventName= page.locator("//tbody/tr[4]/td[1]")
+        this.toast =page.locator('[aria-live="polite"]');
 
     }
 
@@ -52,6 +54,7 @@ async createEvent(eventName: string, eventDesc: string, city:string, venue: stri
 await this.seats.fill('1000');
 await this.imageLink.fill(imageLink);
   await this.addEventBtn.click();
+await expect (this.toast).toBeVisible();
 const allTitles = await this.allEventsInCreatePage.allTextContents();
 
   let found = false;
