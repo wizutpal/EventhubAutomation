@@ -12,5 +12,8 @@
     "@playwright/test": "^1.64.0",
     "@types/node": "^26.6.5",
     "allure-playwright": "^3.13.0"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.8"
   }
 }

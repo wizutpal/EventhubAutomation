@@ -8,6 +8,7 @@
    "imageLink":  "https://commons.wikimedia.org/wiki/File:Durga_Puja_image.jpg",
     "customerName":  "Peter Parker",
      "customerEmail": "peter@gmail.com",
-     "customerPhone":  "1234567890"
+     "customerPhone":  "1234567890",
+          "eventNameForDelete": "Event for Delete"
 
 }

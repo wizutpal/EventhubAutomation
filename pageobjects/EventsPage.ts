@@ -17,6 +17,10 @@ addEventBtn:Locator ;
 createdEventName:Locator ;
  allEventsInCreatePage: Locator;
  toast: Locator;
+ eventRows: Locator;
+ deleteBtn: Locator;
+ deleteMsg: Locator;
+ confirmDelete: Locator;
 
     constructor(page: Page){
         this.page=page;
@@ -34,7 +38,11 @@ createdEventName:Locator ;
         this.addEventBtn= page.locator('#add-event-btn');
         this.allEventsInCreatePage= page.locator("tbody tr td:first-child")
         this.createdEventName= page.locator("//tbody/tr[4]/td[1]")
+        this.eventRows= page.locator('#event-table-row');
         this.toast =page.locator('[aria-live="polite"]');
+        this.deleteBtn= page.locator('#delete-event-btn');
+        this.deleteMsg=page.locator("p[class*=\'text-sm\']");
+        this.confirmDelete=page.locator("#confirm-dialog-yes");
 
     }
 
@@ -65,5 +73,18 @@ const allTitles = await this.allEventsInCreatePage.allTextContents();
     }
   }
   expect(found).toBeTruthy();
+  return eventName;
 }
+
+async deleteEvent(eventName: string){
+  const eventRow = this.eventRows.filter({
+    has: this.page.getByText(eventName, { exact: true })
+  });
+
+  await eventRow.getByRole('button', { name: 'Delete' }).click();
+  const modalMsg = await this.deleteMsg.last().textContent();
+  expect(modalMsg).toBe("This will permanently delete the event and all associated bookings. This cannot be undone.");
+  await this.confirmDelete.click();
+}
+
 }

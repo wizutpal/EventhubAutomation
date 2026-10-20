@@ -28,11 +28,15 @@ EventhubAutomation/
 ├── playwright.config.ts   # Playwright configuration
 ├── package.json
 └── package-lock.json
+├── .env                 # Actual credentials — DO NOT upload
+├── .env.example 
 ```
 
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/) 18 or later
+- Playwright
+- Allure
 - npm
 - Git
 
@@ -76,6 +80,8 @@ npx playwright test --debug
 
 ```bash
 npx playwright show-report
+npx allure generate allure-results --clean
+npx allure open allure-report
 ```
 
 ## Continuous Integration

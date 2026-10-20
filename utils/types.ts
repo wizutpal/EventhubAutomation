@@ -9,5 +9,6 @@ export interface TestData {
 customerName:  string;
      customerEmail: string;
      customerPhone:  string;
+     eventNameForDelete: string;
 
 }

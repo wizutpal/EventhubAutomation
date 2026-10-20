@@ -1,0 +1,314 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: DeleteEvent.spec.ts >> Delete Created Event
+- Location: tests\DeleteEvent.spec.ts:10:6
+
+# Error details
+
+```
+Error: expect(locator).toHaveText(expected) failed
+
+Locator: locator('p[class*=\'text-sm\']')
+Expected: "This will permanently delete the event and all associated bookings. This cannot be undone."
+Error: strict mode violation: locator('p[class*=\'text-sm\']') resolved to 2 elements:
+    1) <p class="text-sm font-medium flex-1 leading-snug">Event created!</p> aka getByText('Event created!')
+    2) <p class="text-sm text-gray-600 mb-6 leading-relaxed">This will permanently delete the event and all as…</p> aka getByText('This will permanently delete')
+
+Call log:
+  - Expect "toHaveText" locator('p[class*=\'text-sm\']') with timeout 5000ms
+  - waiting for locator('p[class*=\'text-sm\']')
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e4]:
+      - link "EventHub" [ref=e5] [cursor=pointer]:
+        - /url: /
+      - generic [ref=e10]:
+        - link "Home" [ref=e11] [cursor=pointer]:
+          - /url: /
+        - link "Events" [ref=e12] [cursor=pointer]:
+          - /url: /events
+        - link "My Bookings" [ref=e13] [cursor=pointer]:
+          - /url: /bookings
+        - link "API Docs" [ref=e14] [cursor=pointer]:
+          - /url: https://api.eventhub.rahulshettyacademy.com/api/docs
+        - button "Admin" [ref=e16] [cursor=pointer]
+        - generic [ref=e19]:
+          - generic "utpal@gmail.com" [ref=e20]
+          - button "Logout" [ref=e21] [cursor=pointer]
+  - main [ref=e22]:
+    - generic [ref=e23]:
+      - generic [ref=e25]:
+        - heading "+ New Event" [level=2] [ref=e26]
+        - generic [ref=e27]:
+          - text: You can add up to
+          - strong [ref=e30]: 6 events
+          - text: . Once the limit is reached, your oldest event is automatically replaced when you add a new one.
+        - generic [ref=e31]:
+          - generic [ref=e32]:
+            - generic [ref=e33]:
+              - generic [ref=e34]: Title*
+              - textbox "Title*" [ref=e35]:
+                - /placeholder: Event title
+            - generic [ref=e36]:
+              - generic [ref=e37]: Description
+              - textbox "Describe the event…" [ref=e38]
+            - generic [ref=e39]:
+              - generic [ref=e40]: Category*
+              - combobox "Category*" [ref=e41] [cursor=pointer]:
+                - option "Conference" [selected]
+                - option "Concert"
+                - option "Sports"
+                - option "Workshop"
+                - option "Festival"
+            - generic [ref=e42]:
+              - generic [ref=e43]: City*
+              - textbox "City*" [ref=e44]:
+                - /placeholder: e.g. Bangalore
+            - generic [ref=e45]:
+              - generic [ref=e46]: Venue*
+              - textbox "Venue*" [ref=e47]:
+                - /placeholder: Venue name & address
+            - generic [ref=e48]:
+              - generic [ref=e49]: Event Date & Time*
+              - textbox "Event Date & Time*" [ref=e50]
+            - generic [ref=e51]:
+              - generic [ref=e52]: Price ($)*
+              - spinbutton "Price ($)*" [ref=e53]
+            - generic [ref=e54]:
+              - generic [ref=e55]: Total Seats*
+              - spinbutton "Total Seats*" [ref=e56]
+            - generic [ref=e57]:
+              - generic [ref=e58]: Image URL (optional)
+              - textbox "Image URL (optional)" [ref=e59]:
+                - /placeholder: https://…
+          - button "+ Add Event" [ref=e61] [cursor=pointer]
+      - generic [ref=e63]:
+        - generic [ref=e64]:
+          - heading "All Events" [level=2] [ref=e65]
+          - generic [ref=e66]: 4 total
+        - table [ref=e68]:
+          - rowgroup [ref=e69]:
+            - row [ref=e70]:
+              - columnheader "Title" [ref=e71]
+              - columnheader "Category" [ref=e72]
+              - columnheader "City" [ref=e73]
+              - columnheader "Date" [ref=e74]
+              - columnheader "Price" [ref=e75]
+              - columnheader "Seats" [ref=e76]
+              - columnheader "Actions" [ref=e77]
+          - rowgroup [ref=e78]:
+            - row [ref=e79]:
+              - cell "Dilli Diwali Mela Featured" [ref=e80]:
+                - text: Dilli Diwali Mela
+                - generic [ref=e81]: Featured
+              - cell "Festival" [ref=e82]
+              - cell "Delhi" [ref=e84]
+              - cell "20 Oct 2026" [ref=e85]
+              - cell "$300" [ref=e86]
+              - cell "4117/10000" [ref=e87]
+              - cell "Read-only" [ref=e89]
+            - row [ref=e90]:
+              - cell "Hollywood Monsoon Night — Los Angeles Featured" [ref=e91]:
+                - text: Hollywood Monsoon Night — Los Angeles
+                - generic [ref=e92]: Featured
+              - cell "Concert" [ref=e93]
+              - cell "Los Angeles" [ref=e95]
+              - cell "12 Jul 2026" [ref=e96]
+              - cell "$2,500" [ref=e97]
+              - cell "2754/3000" [ref=e98]
+              - cell "Read-only" [ref=e100]
+            - row [ref=e101]:
+              - cell "World Tech Summit Featured" [ref=e102]:
+                - text: World Tech Summit
+                - generic [ref=e103]: Featured
+              - cell "Conference" [ref=e104]
+              - cell "Hyderabad" [ref=e106]
+              - cell "18 Apr 2026" [ref=e107]
+              - cell "$1,500" [ref=e108]
+              - cell "8/500" [ref=e109]
+              - cell "Read-only" [ref=e111]
+            - row [ref=e112]:
+              - cell "Baking Feast" [ref=e113]
+              - cell "Festival" [ref=e114]
+              - cell "Golaghat" [ref=e116]
+              - cell "27 Oct 2026" [ref=e117]
+              - cell "$10" [ref=e118]
+              - cell "1000/1000" [ref=e119]
+              - cell [ref=e121]:
+                - generic [ref=e122]:
+                  - button "Edit" [ref=e123] [cursor=pointer]
+                  - button "Delete" [active] [ref=e124] [cursor=pointer]
+  - contentinfo [ref=e125]:
+    - generic [ref=e126]:
+      - generic [ref=e127]:
+        - generic [ref=e128]:
+          - heading "Rahul Shetty Academy" [level=3] [ref=e129]
+          - paragraph [ref=e130]: India's leading QA automation training academy — empowering engineers to build real-world testing skills.
+        - generic [ref=e131]:
+          - heading "Popular Courses" [level=3] [ref=e132]
+          - list [ref=e133]:
+            - listitem [ref=e134]:
+              - link "Selenium WebDriver with Java" [ref=e135] [cursor=pointer]:
+                - /url: https://rahulshettyacademy.com
+            - listitem [ref=e136]:
+              - link "Playwright with JavaScript" [ref=e137] [cursor=pointer]:
+                - /url: https://rahulshettyacademy.com
+            - listitem [ref=e138]:
+              - link "RestAssured API Testing" [ref=e139] [cursor=pointer]:
+                - /url: https://rahulshettyacademy.com
+            - listitem [ref=e140]:
+              - link "Cypress End-to-End Testing" [ref=e141] [cursor=pointer]:
+                - /url: https://rahulshettyacademy.com
+            - listitem [ref=e142]:
+              - link "Appium Mobile Testing" [ref=e143] [cursor=pointer]:
+                - /url: https://rahulshettyacademy.com
+        - generic [ref=e144]:
+          - heading "QA Job Hiring Platform" [level=3] [ref=e145]
+          - paragraph [ref=e146]: Get hired faster — take skill assessments trusted by top QA employers worldwide.
+          - link "techsmarthire.com →" [ref=e147] [cursor=pointer]:
+            - /url: https://techsmarthire.com
+        - generic [ref=e148]:
+          - heading "EventHub Practice App" [level=3] [ref=e149]
+          - list [ref=e150]:
+            - listitem [ref=e151]:
+              - link "Browse Events" [ref=e152] [cursor=pointer]:
+                - /url: /events
+            - listitem [ref=e153]:
+              - link "My Bookings" [ref=e154] [cursor=pointer]:
+                - /url: /bookings
+            - listitem [ref=e155]:
+              - link "Manage Events" [ref=e156] [cursor=pointer]:
+                - /url: /admin/events
+            - listitem [ref=e157]:
+              - link "API Documentation" [ref=e158] [cursor=pointer]:
+                - /url: https://api.eventhub.rahulshettyacademy.com/api/docs
+      - generic [ref=e159]:
+        - paragraph [ref=e160]: © 2026 Rahul Shetty Academy. All rights reserved.
+        - generic [ref=e161]:
+          - link "rahulshettyacademy.com →" [ref=e162] [cursor=pointer]:
+            - /url: https://rahulshettyacademy.com
+          - link "techsmarthire.com →" [ref=e163] [cursor=pointer]:
+            - /url: https://techsmarthire.com
+  - generic [ref=e165]:
+    - generic [ref=e167]: ✓
+    - paragraph [ref=e168]: Event created!
+    - button "Dismiss" [ref=e169] [cursor=pointer]: ×
+  - alert [ref=e170]
+  - dialog [ref=e173]:
+    - generic [ref=e174]:
+      - heading "Delete this event?" [level=2] [ref=e175]
+      - button "Close" [ref=e176] [cursor=pointer]
+    - generic [ref=e179]:
+      - paragraph [ref=e180]: This will permanently delete the event and all associated bookings. This cannot be undone.
+      - generic [ref=e181]:
+        - button "Cancel" [ref=e182] [cursor=pointer]
+        - button "Delete event" [ref=e183] [cursor=pointer]
+```
+
+# Test source
+
+```ts
+  1  | import { expect, Page, Locator } from "@playwright/test";
+  2  | 
+  3  | export class EventsPage{
+  4  |     page:Page;
+  5  |     events:Locator ;
+  6  | addNewEvent:Locator ;
+  7  | titlePlaceholder:Locator ;
+  8  | descPlaceholder:Locator ;
+  9  | occation:Locator ;
+  10 | city:Locator ;
+  11 | venue:Locator ;
+  12 | dateTime:Locator ;
+  13 | price:Locator ;
+  14 | seats:Locator ;
+  15 | imageLink:Locator ;
+  16 | addEventBtn:Locator ;
+  17 | createdEventName:Locator ;
+  18 |  allEventsInCreatePage: Locator;
+  19 |  toast: Locator;
+  20 |  eventRows: Locator;
+  21 |  deleteBtn: Locator;
+  22 |  deleteMsg: Locator;
+  23 |  confirmDelete: Locator;
+  24 | 
+  25 |     constructor(page: Page){
+  26 |         this.page=page;
+  27 |         this.events= page.locator('#nav-events');
+  28 |         this.addNewEvent= page.getByRole('button', { name: 'Add New Event' });
+  29 |         this.titlePlaceholder= page.locator('#event-title-input');
+  30 |         this.descPlaceholder= page.locator("textarea[placeholder*='Describe ']");
+  31 |         this.occation = page.locator('#category');
+  32 |         this.city= page.locator('#city');
+  33 |         this.venue=page.locator('#venue');
+  34 |         this.dateTime= page.getByLabel('Event Date & Time*');
+  35 |         this.price= page.getByLabel('Price ($)*');
+  36 |         this.seats= page.getByLabel('Total Seats*');
+  37 |         this.imageLink=page.locator('input[id="image-url-(optional)"]')
+  38 |         this.addEventBtn= page.locator('#add-event-btn');
+  39 |         this.allEventsInCreatePage= page.locator("tbody tr td:first-child")
+  40 |         this.createdEventName= page.locator("//tbody/tr[4]/td[1]")
+  41 |         this.eventRows= page.locator('#event-table-row');
+  42 |         this.toast =page.locator('[aria-live="polite"]');
+  43 |         this.deleteBtn= page.locator('#delete-event-btn');
+  44 |         this.deleteMsg=page.locator("p[class*='text-sm']");
+  45 |         this.confirmDelete=page.locator("#confirm-dialog-yes");
+  46 | 
+  47 |     }
+  48 | 
+  49 |    
+  50 | async createEvent(eventName: string, eventDesc: string, city:string, venue: string, imageLink: string){
+  51 |   await this.events.click()
+  52 |  await this.addNewEvent.click();
+  53 |  await expect(this.titlePlaceholder).toBeVisible();   // form is rendered
+  54 | 
+  55 |  await this.titlePlaceholder.fill(eventName);
+  56 |   await this.descPlaceholder.fill(eventDesc);
+  57 |  await this.occation.selectOption('Festival');
+  58 |   await this.city.fill(city);
+  59 |     await this.venue.fill(venue);
+  60 |  await this.dateTime.fill('2026-10-27T07:42');
+  61 |   await this.price.fill('10');
+  62 | await this.seats.fill('1000');
+  63 | await this.imageLink.fill(imageLink);
+  64 |   await this.addEventBtn.click();
+  65 | await expect (this.toast).toBeVisible();
+  66 | const allTitles = await this.allEventsInCreatePage.allTextContents();
+  67 | 
+  68 |   let found = false;
+  69 |   for (const title of allTitles) {
+  70 |     if (title.trim() === eventName) {
+  71 |       found = true;
+  72 |       break;
+  73 |     }
+  74 |   }
+  75 |   expect(found).toBeTruthy();
+  76 |   return eventName;
+  77 | }
+  78 | 
+  79 | async deleteEvent(eventName: string){
+  80 |   const eventRow = this.eventRows.filter({
+  81 |     has: this.page.getByText(eventName, { exact: true })
+  82 |   });
+  83 | 
+  84 |   await eventRow.getByRole('button', { name: 'Delete' }).click();
+> 85 |   await expect (this.deleteMsg).toHaveText("This will permanently delete the event and all associated bookings. This cannot be undone.");
+     |                                 ^ Error: expect(locator).toHaveText(expected) failed
+  86 |   await this.confirmDelete.click();
+  87 | }
+  88 | 
+  89 | }
+  90 | 
+```

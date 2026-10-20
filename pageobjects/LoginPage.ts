@@ -18,7 +18,7 @@ export class LoginPage{
 
     
     async login(username: string, password: string){
-    await this.page.goto('https://eventhub.rahulshettyacademy.com/login');
+    await this.page.goto('/');
       await this.email.fill(username);
       await this.password.fill(password);
       await this.loginBtn.click();
