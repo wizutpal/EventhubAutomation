@@ -1,0 +1,23 @@
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEyMTI0LCJlbWFpbCI6InV0cGFsQGdtYWlsLmNvbSIsImlhdCI6MTc5MjUwNDM1MywiZXhwIjoxNzkzMTA5MTUzfQ.MqWV9BP87RqeW9Vea3Y3Z_lrc_F1ahUc6NRDqM5JREo
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEyMTI0LCJlbWFpbCI6InV0cGFsQGdtYWlsLmNvbSIsImlhdCI6MTc5MjUwNDM1MywiZXhwIjoxNzkzMTA5MTUzfQ.MqWV9BP87RqeW9Vea3Y3Z_lrc_F1ahUc6NRDqM5JREo
+{
+  success: true,
+  data: {
+    id: 22602,
+    title: 'Event 2 Via API',
+    description: 'Event Created via API',
+    category: 'Sports',
+    venue: 'General Field',
+    city: 'Kolkata',
+    eventDate: '2026-10-30T13:15:00.000Z',
+    price: '10',
+    totalSeats: 500,
+    availableSeats: 500,
+    imageUrl: null,
+    isStatic: false,
+    userId: 12124,
+    createdAt: '2026-10-20T13:52:33.624Z',
+    updatedAt: '2026-10-20T13:52:33.624Z'
+  },
+  message: 'Event created successfully'
+}

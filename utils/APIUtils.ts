@@ -28,4 +28,28 @@ export class APIUtils {
         console.log(token);
         return token;
     }
+
+    async createEvent(eventPayLoad: object){
+         let response={token: "", eventName: ""};
+         response.token= await this.getToken();
+         const eventResponse= await this.apiContext.post("https://api.eventhub.rahulshettyacademy.com/api/events",
+                {
+                    data: eventPayLoad,
+                    headers: {
+                                'Authorization': `Bearer ${response.token}`,
+                                'content-type': 'application/json'
+                            }
+                }
+            )
+               const eventResponseJson= await eventResponse.json(); 
+               console.log(eventResponseJson);
+               
+                let eventName: any
+                eventName= await eventResponseJson.data.title;
+
+               response.eventName= eventName;   
+               return response;
+    }
 }
+
+

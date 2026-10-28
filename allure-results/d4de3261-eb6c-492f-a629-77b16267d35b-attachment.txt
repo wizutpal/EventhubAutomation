@@ -1,0 +1,23 @@
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEyMTI0LCJlbWFpbCI6InV0cGFsQGdtYWlsLmNvbSIsImlhdCI6MTc5MjUwNDEzNiwiZXhwIjoxNzkzMTA4OTM2fQ.rpljk8_6PJuAC_zGEClcr79ptNiQnOyPGxnQddO0VcE
+{
+  success: false,
+  error: 'Validation failed',
+  details: [
+    { field: 'title', message: 'Title is required' },
+    { field: 'category', message: 'Category is required' },
+    { field: 'venue', message: 'Venue is required' },
+    { field: 'city', message: 'City is required' },
+    { field: 'eventDate', message: 'Event date is required' },
+    {
+      field: 'eventDate',
+      message: 'Event date must be a valid ISO 8601 date'
+    },
+    { field: 'price', message: 'Price is required' },
+    { field: 'price', message: 'Price must be a non-negative number' },
+    { field: 'totalSeats', message: 'Total seats is required' },
+    {
+      field: 'totalSeats',
+      message: 'Total seats must be a positive integer'
+    }
+  ]
+}
