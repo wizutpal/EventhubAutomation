@@ -1,0 +1,78 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: EventhubAPILogin.spec.ts >> Add Event
+- Location: tests\EventhubAPILogin.spec.ts:35:5
+
+# Error details
+
+```
+TypeError: Cannot read properties of undefined (reading 'title')
+```
+
+# Test source
+
+```ts
+  1  | import { APIRequestContext, expect } from '@playwright/test';
+  2  | 
+  3  | export interface LoginData {
+  4  |   email: string;
+  5  |   password: string;
+  6  | }
+  7  | 
+  8  | export class APIUtils {
+  9  |   private apiContext: APIRequestContext;
+  10 |   private loginPayLoad: LoginData;
+  11 | 
+  12 |     constructor(apiContext: any, loginPayLoad: LoginData)
+  13 |     {
+  14 |         this.apiContext=apiContext;
+  15 |         this.loginPayLoad=loginPayLoad;
+  16 |     }
+  17 | 
+  18 |     async getToken()
+  19 |     {
+  20 |         
+  21 |         const loginResponse= await this.apiContext.post("https://api.eventhub.rahulshettyacademy.com/api/auth/login",
+  22 |         {
+  23 |             data: this.loginPayLoad
+  24 |         })
+  25 |             //ok tracks all 2XX series status codes
+  26 |         const jsonResponse= await loginResponse.json();
+  27 |         const token= jsonResponse.token;
+  28 |         console.log(token);
+  29 |         return token;
+  30 |     }
+  31 | 
+  32 |     async createEvent(eventPayLoad: object){
+  33 |          let response={token: "", eventName: ""};
+  34 |          response.token= await this.getToken();
+  35 |          const eventResponse= await this.apiContext.post("https://api.eventhub.rahulshettyacademy.com/api/events",
+  36 |                 {
+  37 |                     data: eventPayLoad,
+  38 |                     headers: {
+  39 |                                 'Authorization': `Bearer ${response.token}`,
+  40 |                                 'content-type': 'application/json'
+  41 |                             }
+  42 |                 }
+  43 |             )
+  44 |                const eventResponseJson= await eventResponse.json(); 
+  45 |                console.log(eventResponseJson);
+  46 |                
+  47 |                 let eventName: any
+> 48 |                 eventName= await eventResponseJson.data.title;
+     |                                                         ^ TypeError: Cannot read properties of undefined (reading 'title')
+  49 | 
+  50 |                response.eventName= eventName;   
+  51 |                return response;
+  52 |     }
+  53 | }
+  54 | 
+  55 | 
+  56 | 
+```

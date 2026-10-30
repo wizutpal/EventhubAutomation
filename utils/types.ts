@@ -1,7 +1,5 @@
 export interface TestData {
-  username: string;
-  password: string;
-  eventName: string;
+   eventName: string;
   eventDescription: string;
    city: string;
    venue: string;

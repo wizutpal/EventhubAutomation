@@ -1,0 +1,9 @@
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEyMTI0LCJlbWFpbCI6InV0cGFsQGdtYWlsLmNvbSIsImlhdCI6MTc5MzM3NTc0NSwiZXhwIjoxNzkzOTgwNTQ1fQ.YzmjNuUnEAu_J8BL32F4txxY7sNBD9_JBzOV7A-Lwoo
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEyMTI0LCJlbWFpbCI6InV0cGFsQGdtYWlsLmNvbSIsImlhdCI6MTc5MzM3NTc0NiwiZXhwIjoxNzkzOTgwNTQ2fQ.omonQ77-2MZbUk9NDsDgSDsz7uQykjrxiRC68xUpH8M
+{
+  success: false,
+  error: 'Validation failed',
+  details: [
+    { field: 'eventDate', message: 'Event date must be in the future' }
+  ]
+}

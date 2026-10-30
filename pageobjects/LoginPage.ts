@@ -7,6 +7,7 @@ export class LoginPage{
   password: Locator;
   loginBtn: Locator;
   emailDisplay: Locator;
+  toastError: Locator;
 
     constructor(page: Page){
       this.page=page;
@@ -14,6 +15,7 @@ export class LoginPage{
       this.password= page.locator('#password');
       this.loginBtn=page.locator('#login-btn');
       this.emailDisplay=page.locator('#user-email-display');
+      this.toastError= page.locator('[aria-live="polite"] p');
     }
 
     
@@ -22,8 +24,6 @@ export class LoginPage{
       await this.email.fill(username);
       await this.password.fill(password);
       await this.loginBtn.click();
-     await expect(this.emailDisplay).toBeVisible();
-       await expect(this.emailDisplay).toHaveText('utpal@gmail.com');
     }
 
 }
